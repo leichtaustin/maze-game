@@ -1,5 +1,5 @@
 # Purpose of Project
-    The goal of this project is to practice the use of Javascript classes, methods, and implementing their use with React App to provide a game in which a use navigates a maze. 
+    The goal of this project is to practice the use of Javascript forms, inputs, and methods  implementing their use with React App to provide a game in which a use navigates a maze. 
 
 # Wireframe / Overview
 
