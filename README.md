@@ -8,3 +8,6 @@
     Button will be available to reset, to generate a new field, or to auto solve.
 
 
+    Trying this again, not using a store, passing info via props
+
+
