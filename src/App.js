@@ -19,7 +19,7 @@ function App() {
       <p>fieldParams Height: {fieldParams.height}</p>
       <p>fieldParams Width: {fieldParams.width}</p>
       <p>fieldParams Percentage: {fieldParams.percentage}</p>
-      <Field />
+      <Field fieldParams = {fieldParams}/>
     </div>
   );
 }
