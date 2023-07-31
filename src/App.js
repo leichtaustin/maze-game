@@ -1,7 +1,7 @@
 import './App.css';
 import { FieldForm } from './components/FieldForm/FieldForm';
 import React, { useState } from 'react';
-import Field from './components/FieldForm/Field/Field';
+import Field from './components/Field/Field';
 
 function App() {
    
@@ -97,8 +97,12 @@ function App() {
     setFieldParams(params)
   }
 
-  const testStep = (stepId) => {
-    setNextStep(stepId);
+  const testStep = (testLoc) => {
+    setTestLocation(testLoc);
+  }
+
+  const resetCurrentLocation = (currLoc) => {
+    setCurrentLocation(currLoc);
   }
 
  
@@ -113,7 +117,7 @@ function App() {
           <FieldForm setField = {adjustFieldParams}/>
         </div>
         <div id='gameArea'>
-          <Field fieldParams = {fieldParams} currentLocation = {currentLocation} testLocation = {testLocation} testStep = {testStep}/>
+          <Field fieldParams = {fieldParams} currentLocation = {currentLocation} testLocation = {testLocation} setTest = {testStep}  setCurrLoc = {resetCurrentLocation}/>
           <div className='UserButtons'>
             <button onClick={handleMoveCharacter} name='y' value='left'>Left</button>
             <button onClick={handleMoveCharacter} name='y' value='right'>Right</button>

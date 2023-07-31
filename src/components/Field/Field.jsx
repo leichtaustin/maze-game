@@ -31,13 +31,17 @@ export default function Field(props) {
         let step = returnNextStep(testX, testY)
         console.log(`Step is ${step}`);
         if (step === hat) {
-            props.testStep('hat');
+            //props.testStep('hat');
             alert('In field.jsx you found the hat');
+            document.getElementById('field').style.display = 'none';
+            setField([])
+            props.setCurrLoc({x: 0, y: 0});
+            props.setTest({testX: 0, testY: 0});
         } else if (step === hole) {
-            props.testStep('hole');
+            //props.testStep('hole');
             alert('In Field.jsx you stepped in a hole');
         } else if (step === fieldCharacter || step === pathCharacter) {
-            props.testStep('okay');
+            //props.testStep('okay');
         }
     }, [props.testLocation])
 
@@ -101,7 +105,7 @@ export default function Field(props) {
     }
     
     return (
-        <div className='field'>
+        <div id='field' className='field'>
             {field.map(row => (
                 <p className='fieldRow'>{row}</p>
             ))}

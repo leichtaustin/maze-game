@@ -20,6 +20,7 @@ export function FieldForm(props) {
         };
         if(fieldParams) {
             props.setField(fieldParams);
+            document.getElementById('field').style.display='block';
         }
         setFormInput({height: 5, width: 5, percentage: 2})
 
