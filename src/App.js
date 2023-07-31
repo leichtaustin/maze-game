@@ -15,10 +15,10 @@ function App() {
     console.log(keyPressed)
     switch(value) {
       case 'left':
-        if(currentLocation.x > 0) {  
+        if(currentLocation.y > 0) {  
           setCurrentLocation((prev) => ({
               ...prev,
-              [name]: currentLocation.x - 1
+              [name]: currentLocation.y - 1
             }));
             console.log(`Current Location x is now ${currentLocation.x}`);
             break;
@@ -27,22 +27,22 @@ function App() {
             break;
         }
       case 'right':
-        if (currentLocation.x < fieldParams.width) {  
+        if (currentLocation.y < fieldParams.width-1) {  
           setCurrentLocation((prev) => ({
             ...prev,
-            [name]: currentLocation.x + 1
+            [name]: currentLocation.y + 1
           }));
-          console.log(`Current Location x is now ${currentLocation.x}`);
+          console.log(`Current Location x is now ${currentLocation.x}, y is ${currentLocation.y}`);
           break;
         } else {
           console.log('Out of Bounds');
           break;
         }
       case 'up':
-        if (currentLocation.y > 0) {
+        if (currentLocation.x > 0) {
           setCurrentLocation((prev) => ({
             ...prev,
-            [name]: currentLocation.y - 1
+            [name]: currentLocation.x - 1
           }));
           console.log(`Current Location y is now ${currentLocation.y}`);
           break;
@@ -51,10 +51,10 @@ function App() {
           break;
         }
       case 'down':
-        if (currentLocation.y < fieldParams.height) {
+        if (currentLocation.x < fieldParams.height-1) {
           setCurrentLocation((prev) => ({
             ...prev,
-            [name]: currentLocation.y + 1
+            [name]: currentLocation.x + 1
           }));
           console.log(`Current Location y is now ${currentLocation.y}`);
           break;
@@ -81,10 +81,10 @@ function App() {
       <p>fieldParams Percentage: {fieldParams.percentage}</p>
       <Field fieldParams = {fieldParams} currentLocation = {currentLocation}/>
       <div className='UserButtons'>
-        <button onClick={handleMoveCharacter} name='x' value='left'>Left</button>
-        <button onClick={handleMoveCharacter} name='x' value='right'>Right</button>
-        <button onClick={handleMoveCharacter} name='y' value='up'>Up</button>
-        <button onClick={handleMoveCharacter} name='y' value='down'>down</button>
+        <button onClick={handleMoveCharacter} name='y' value='left'>Left</button>
+        <button onClick={handleMoveCharacter} name='y' value='right'>Right</button>
+        <button onClick={handleMoveCharacter} name='x' value='up'>Up</button>
+        <button onClick={handleMoveCharacter} name='x' value='down'>down</button>
       </div>
     </div>
   );

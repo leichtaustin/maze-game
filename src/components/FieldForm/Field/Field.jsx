@@ -27,9 +27,9 @@ export default function Field(props) {
 
     function createPath(x, y) {
         const newArray = field.map((row, i) => {
-            if (i === y) {
+            if (i === x) {
                 return field[x].map((el, j) => {
-                    if (j === x) {
+                    if (j === y) {
                         return pathCharacter;
                     } else {
                         return el;
