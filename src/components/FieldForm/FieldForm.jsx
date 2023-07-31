@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 export function FieldForm(props) {
-    const [formInput, setFormInput] = useState({height: 3, width: 3, percentage: 2});
+    const [formInput, setFormInput] = useState({height: 5, width: 5, percentage: 2});
 
     const handleFormChange = (e) => {
         const {name, value} = e.target;
@@ -21,7 +21,7 @@ export function FieldForm(props) {
         if(fieldParams) {
             props.setField(fieldParams);
         }
-        setFormInput({height: 3, width: 3, percentage: 2})
+        setFormInput({height: 5, width: 5, percentage: 2})
 
     }
 
@@ -37,7 +37,7 @@ export function FieldForm(props) {
                     placeholder='Input Height Here'
                     value={formInput.height}
                     onChange={handleFormChange}
-                    min={3}
+                    min={5}
                     max={12}
                 /> 
                 <br />
@@ -50,7 +50,7 @@ export function FieldForm(props) {
                     placeholder='Input Width Here'
                     value={formInput.width}
                     onChange={handleFormChange}
-                    min={3}
+                    min={5}
                     max={12}
                 />
                 <br />
