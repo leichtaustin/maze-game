@@ -32,14 +32,18 @@ export default function Field(props) {
         console.log(`Step is ${step}`);
         if (step === hat) {
             //props.testStep('hat');
-            alert('In field.jsx you found the hat');
+            alert('You found the hat, congratulations you won!');
             document.getElementById('field').style.display = 'none';
             setField([])
             props.setCurrLoc({x: 0, y: 0});
             props.setTest({testX: 0, testY: 0});
         } else if (step === hole) {
             //props.testStep('hole');
-            alert('In Field.jsx you stepped in a hole');
+            alert('You just stepped in a hole, time to restart');
+            document.getElementById('field').style.display = 'none';
+            setField([])
+            props.setCurrLoc({x: 0, y: 0});
+            props.setTest({testX: 0, testY: 0});
         } else if (step === fieldCharacter || step === pathCharacter) {
             //props.testStep('okay');
         }

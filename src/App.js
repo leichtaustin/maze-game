@@ -109,8 +109,9 @@ function App() {
   return (
     <div className="App">
       <div id='Instructions'>
-        <h1>Maze Game</h1>
-        <p id='userinstructrions'>The goal of this game is to find the hat, first select your dimensions then navigate to find your hat</p>
+        <h1>Find your hat!</h1>
+        <p id='userinstructrions'>Navigate through the treacherous path avoiding all the holes in order to find your hat. Use the buttons below to 
+        move left, right, up, or down. Find your hat without falling into a hole and you win! Fall in a hole and you have to restart. <br/> Good Luck!</p>
       </div>
       <main id='main'>
         <div id='fieldForm'>

@@ -55,7 +55,7 @@ export function FieldForm(props) {
                     max={12}
                 />
                 <br />
-                <label for='percentage'>Percentage: </label>
+                {/* <label for='percentage'>Percentage of Holes: </label>
                 <input 
                     type='number'
                     id='percentage'
@@ -67,8 +67,8 @@ export function FieldForm(props) {
                     min={1}
                     max={10}
                 />
-                <br />
-                <button className='submitButton' type='submit'>Submit Values</button>             
+                <br /> */}
+                <button className='submitButton' type='submit'>Create Your Playing Field!</button>             
             </form>
         </div>
     )

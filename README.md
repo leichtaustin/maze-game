@@ -3,11 +3,12 @@
 
 # Wireframe / Overview
 
-    At top, form will be used to start game and provide inputs into the game settings. 
-    Main section will consist of the randomly generated field
-    Button will be available to reset, to generate a new field, or to auto solve.
+    First section will be some quick instructions for the user, followed by a form to create the initial size of the playing field. 
 
+    User will be able to create the field of a desired size and the playing field will be initialized. 
 
-    Trying this again, not using a store, passing info via props
+    States will be used to manage the players current location and update the field based on where they navigate to. 
+
+    Once a player either falls into a hole or finds their hat the game will reset. 
 
 
