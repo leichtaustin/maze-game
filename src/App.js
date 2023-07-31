@@ -8,6 +8,8 @@ function App() {
   const [fieldParams, setFieldParams] = useState({height: 5, width: 5, percentage: 2});
   //const [userInput, setUserInput] = useState(null);
   const [currentLocation, setCurrentLocation] = useState({x: 0, y: 0})
+  const [testLocation, setTestLocation] = useState({testX: 0, testY: 0})
+  const [nextStep, setNextStep] = useState(null);
   const [playing, setPlaying] = useState(false);
 
   const handleMoveCharacter = (e) => {
@@ -16,14 +18,18 @@ function App() {
     console.log(keyPressed)
     switch(value) {
       case 'left':
-        if(currentLocation.y > 0) {  
+        if(currentLocation.y > 0) {
+          setTestLocation((prev) => ({
+            ...prev,
+            testY: testLocation.testY - 1
+          }));
           setCurrentLocation((prev) => ({
               ...prev,
               [name]: currentLocation.y - 1
-            }));
-            console.log(`Current Location x is now ${currentLocation.x}`);
-            document.getElementById('BoundaryCheck').style.display='none';
-            break;
+          }));
+          console.log(`Current Location x is now ${currentLocation.x}`);
+          document.getElementById('BoundaryCheck').style.display='none';
+          break;
         } else {
             console.log('Out of Bounds');
             document.getElementById('BoundaryCheck').style.display='block';
@@ -31,13 +37,17 @@ function App() {
         }
       case 'right':
         if (currentLocation.y < fieldParams.width-1) {  
+          setTestLocation((prev) => ({
+            ...prev,
+            testY: testLocation.testY + 1
+          }));
           setCurrentLocation((prev) => ({
             ...prev,
             [name]: currentLocation.y + 1
           }));
           console.log(`Current Location x is now ${currentLocation.x}, y is ${currentLocation.y}`);
           document.getElementById('BoundaryCheck').style.display='none';
-          break;
+          break; 
         } else {
           console.log('Out of Bounds');
           document.getElementById('BoundaryCheck').style.display='block';
@@ -45,6 +55,10 @@ function App() {
         }
       case 'up':
         if (currentLocation.x > 0) {
+          setTestLocation((prev) => ({
+            ...prev,
+            testX: testLocation.testX - 1
+          }));  
           setCurrentLocation((prev) => ({
             ...prev,
             [name]: currentLocation.x - 1
@@ -59,6 +73,10 @@ function App() {
         }
       case 'down':
         if (currentLocation.x < fieldParams.height-1) {
+          setTestLocation((prev) => ({
+            ...prev,
+            testX: testLocation.testX + 1
+          }));  
           setCurrentLocation((prev) => ({
             ...prev,
             [name]: currentLocation.x + 1
@@ -80,20 +98,19 @@ function App() {
     setFieldParams(params)
   }
 
-  const togglePlayingStatus = () => {
-    if(playing) {
-      setPlaying(false);
-    } else {
-      setPlaying(true);
-    }
+  const testStep = (stepId) => {
+    setNextStep(stepId);
   }
-  
+
+ 
   return (
     <div className="App">
       <h1>Maze Game</h1>
       <p>The goal of this game is to find the hat, first select your dimensions then navigate to find your hat</p>
       <FieldForm setField = {adjustFieldParams}/>
-      <Field fieldParams = {fieldParams} currentLocation = {currentLocation}/>
+      <p>TestX: ${testLocation.testX}</p>
+      <p>TestY: ${testLocation.testY}</p>
+      <Field fieldParams = {fieldParams} currentLocation = {currentLocation} testLocation = {testLocation} testStep = {testStep}/>
       <div className='UserButtons'>
         <button onClick={handleMoveCharacter} name='y' value='left'>Left</button>
         <button onClick={handleMoveCharacter} name='y' value='right'>Right</button>

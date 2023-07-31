@@ -4,6 +4,7 @@ export default function Field(props) {
 
     const { height, width, percentage } = props.fieldParams;
     const { x, y } = props.currentLocation;
+    const { testX, testY } = props.testLocation;
     const [field, setField] = useState([]);
 
     const hat = '^';
@@ -25,6 +26,20 @@ export default function Field(props) {
         
     }, [props.currentLocation])
 
+    useEffect(() => {
+        let step = returnNextStep(testX, testY)
+        console.log(`Step is ${step}`);
+        if (step === hat) {
+            props.testStep('hat');
+            alert('In field.jsx you found the hat');
+        } else if (step === hole) {
+            props.testStep('hole');
+            alert('In Field.jsx you stepped in a hole');
+        } else if (step === fieldCharacter || step === pathCharacter) {
+            props.testStep('okay');
+        }
+    }, [props.testLocation])
+
     function createPath(x, y) {
         const newArray = field.map((row, i) => {
             if (i === x) {
@@ -42,11 +57,21 @@ export default function Field(props) {
         return newArray;
     }
 
+    function returnNextStep(x, y) {
+        let val;
+        field.map((row, i) => {
+            if (i === x) {
+                field[x].map((el, j) => {
+                    if (j === y) {
+                        val = el;
+                    }
+                })
+            } 
+        });
+        console.log(`val is ${val}`)
+        return val;
+    }
 
-
-    // useEffect(() => {
-    //     setField((prev) => prev[x][y] = pathCharacter)
-    // }, [props.currentLocation])
     
     function generateField(height, width, percentage) {
     const decPercent = percentage/10;
