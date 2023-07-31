@@ -6,8 +6,9 @@ import Field from './components/FieldForm/Field/Field';
 function App() {
    
   const [fieldParams, setFieldParams] = useState({height: 5, width: 5, percentage: 2});
-  const [userInput, setUserInput] = useState(null);
+  //const [userInput, setUserInput] = useState(null);
   const [currentLocation, setCurrentLocation] = useState({x: 0, y: 0})
+  const [playing, setPlaying] = useState(false);
 
   const handleMoveCharacter = (e) => {
     const keyPressed = e.target.value;
@@ -21,9 +22,11 @@ function App() {
               [name]: currentLocation.y - 1
             }));
             console.log(`Current Location x is now ${currentLocation.x}`);
+            document.getElementById('BoundaryCheck').style.display='none';
             break;
         } else {
             console.log('Out of Bounds');
+            document.getElementById('BoundaryCheck').style.display='block';
             break;
         }
       case 'right':
@@ -33,9 +36,11 @@ function App() {
             [name]: currentLocation.y + 1
           }));
           console.log(`Current Location x is now ${currentLocation.x}, y is ${currentLocation.y}`);
+          document.getElementById('BoundaryCheck').style.display='none';
           break;
         } else {
           console.log('Out of Bounds');
+          document.getElementById('BoundaryCheck').style.display='block';
           break;
         }
       case 'up':
@@ -45,9 +50,11 @@ function App() {
             [name]: currentLocation.x - 1
           }));
           console.log(`Current Location y is now ${currentLocation.y}`);
+          document.getElementById('BoundaryCheck').style.display='none';
           break;
         } else {
           console.log('Out of Bounds');
+          document.getElementById('BoundaryCheck').style.display='block';
           break;
         }
       case 'down':
@@ -57,9 +64,11 @@ function App() {
             [name]: currentLocation.x + 1
           }));
           console.log(`Current Location y is now ${currentLocation.y}`);
+          document.getElementById('BoundaryCheck').style.display='none';
           break;
         } else {
           console.log('Out of Bounds');
+          document.getElementById('BoundaryCheck').style.display='block';
           break;
         }
       default: 
@@ -70,15 +79,20 @@ function App() {
   const adjustFieldParams = (params) => {
     setFieldParams(params)
   }
+
+  const togglePlayingStatus = () => {
+    if(playing) {
+      setPlaying(false);
+    } else {
+      setPlaying(true);
+    }
+  }
   
   return (
     <div className="App">
       <h1>Maze Game</h1>
       <p>The goal of this game is to find the hat, first select your dimensions then navigate to find your hat</p>
-      <FieldForm setField = {adjustFieldParams} />
-      <p>fieldParams Height: {fieldParams.height}</p>
-      <p>fieldParams Width: {fieldParams.width}</p>
-      <p>fieldParams Percentage: {fieldParams.percentage}</p>
+      <FieldForm setField = {adjustFieldParams}/>
       <Field fieldParams = {fieldParams} currentLocation = {currentLocation}/>
       <div className='UserButtons'>
         <button onClick={handleMoveCharacter} name='y' value='left'>Left</button>
@@ -86,6 +100,7 @@ function App() {
         <button onClick={handleMoveCharacter} name='x' value='up'>Up</button>
         <button onClick={handleMoveCharacter} name='x' value='down'>down</button>
       </div>
+      <p id='BoundaryCheck' style={{display: 'none'}}>You are trying to move out of bounds</p>
     </div>
   );
 }
