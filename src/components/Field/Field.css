@@ -1,0 +1,17 @@
+.field {
+    margin: auto;
+    border: 10px solid #6E442E;
+    max-width: fit-content;
+    padding: 5px;
+    display: block;
+}
+
+.fieldRow {
+    margin: auto;
+    max-width: fit-content;
+    background-color: antiquewhite;
+    font-size: 2rem;
+    letter-spacing: 1.5rem;
+    text-align: center;
+
+}

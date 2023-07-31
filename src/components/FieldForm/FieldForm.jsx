@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import './FieldForm.css';
 export function FieldForm(props) {
     const [formInput, setFormInput] = useState({height: 5, width: 5, percentage: 2});
 
@@ -67,7 +67,7 @@ export function FieldForm(props) {
                     max={10}
                 />
                 <br />
-                <button type='submit'>Submit Values</button>             
+                <button className='submitButton' type='submit'>Submit Values</button>             
             </form>
         </div>
     )

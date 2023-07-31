@@ -1,0 +1,19 @@
+.formDiv {
+    padding-top: 20px;
+}
+
+.FieldForm {
+    font-size: 1.15rem;
+    max-width: fit-content;
+    margin: auto;
+    font-weight: bold;
+}
+
+input {
+    background-color: white;
+    margin: 3px;
+}
+
+.submitButton {
+    margin-bottom: 20px;
+}

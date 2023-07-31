@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import './Field.css';
 
 export default function Field(props) {
 
@@ -95,19 +96,14 @@ export default function Field(props) {
         }
     field[hatLocation.y][hatLocation.x] = hat;
     field[0][0] = pathCharacter;
-        /*console.log(height)
-        console.log(width)
-        console.log(percentage)
-        console.log(fieldDrawing);     
-        const field = [[height, 1, 2], [width, 2, 3], [decPercent, 3, 4]];*/
         
     setField(field);
     }
     
     return (
-        <div>
+        <div className='field'>
             {field.map(row => (
-                <p>{row}</p>
+                <p className='fieldRow'>{row}</p>
             ))}
         </div>
     )

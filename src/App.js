@@ -10,7 +10,6 @@ function App() {
   const [currentLocation, setCurrentLocation] = useState({x: 0, y: 0})
   const [testLocation, setTestLocation] = useState({testX: 0, testY: 0})
   const [nextStep, setNextStep] = useState(null);
-  const [playing, setPlaying] = useState(false);
 
   const handleMoveCharacter = (e) => {
     const keyPressed = e.target.value;
@@ -105,19 +104,25 @@ function App() {
  
   return (
     <div className="App">
-      <h1>Maze Game</h1>
-      <p>The goal of this game is to find the hat, first select your dimensions then navigate to find your hat</p>
-      <FieldForm setField = {adjustFieldParams}/>
-      <p>TestX: ${testLocation.testX}</p>
-      <p>TestY: ${testLocation.testY}</p>
-      <Field fieldParams = {fieldParams} currentLocation = {currentLocation} testLocation = {testLocation} testStep = {testStep}/>
-      <div className='UserButtons'>
-        <button onClick={handleMoveCharacter} name='y' value='left'>Left</button>
-        <button onClick={handleMoveCharacter} name='y' value='right'>Right</button>
-        <button onClick={handleMoveCharacter} name='x' value='up'>Up</button>
-        <button onClick={handleMoveCharacter} name='x' value='down'>down</button>
+      <div id='Instructions'>
+        <h1>Maze Game</h1>
+        <p id='userinstructrions'>The goal of this game is to find the hat, first select your dimensions then navigate to find your hat</p>
       </div>
-      <p id='BoundaryCheck' style={{display: 'none'}}>You are trying to move out of bounds</p>
+      <main id='main'>
+        <div id='fieldForm'>
+          <FieldForm setField = {adjustFieldParams}/>
+        </div>
+        <div id='gameArea'>
+          <Field fieldParams = {fieldParams} currentLocation = {currentLocation} testLocation = {testLocation} testStep = {testStep}/>
+          <div className='UserButtons'>
+            <button onClick={handleMoveCharacter} name='y' value='left'>Left</button>
+            <button onClick={handleMoveCharacter} name='y' value='right'>Right</button>
+            <button onClick={handleMoveCharacter} name='x' value='up'>Up</button>
+            <button onClick={handleMoveCharacter} name='x' value='down'>down</button>
+          </div>
+          <p id='BoundaryCheck'>You are trying to move out of bounds</p>
+        </div>
+      </main>
     </div>
   );
 }
